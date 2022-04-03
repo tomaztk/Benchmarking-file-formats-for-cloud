@@ -10,24 +10,11 @@ import pyarrow.orc as orc
 from fastavro import writer, reader, parse_schema
 
 number_of_runs = 3
-np.random.seed = 42
-#df_size = 10_000_000
-df_size = 100_000
-
-
-df = pd.DataFrame({
-    'a': np.random.rand(df_size),
-    'b': np.random.rand(df_size),
-    'c': np.random.rand(df_size),
-    'd': np.random.rand(df_size),
-    'e': np.random.rand(df_size)
-})
-df.head()
 
 
 def Create_df():
-    np.random.seed = 42
-    df_size = 10_000_000
+    np.random.seed = 2908
+    df_size = 1000_000
     
     df = pd.DataFrame({
         'a': np.random.rand(df_size),
