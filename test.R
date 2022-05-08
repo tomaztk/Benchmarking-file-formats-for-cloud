@@ -11,7 +11,7 @@ library(stringi)
 setwd("/Users/tomazkastrun/Downloads/")
 
 # test parameters for creating a file
-nof_rows = 100000 #10^6 #1 mio rows
+nof_rows = 10000 #10^6 #1 mio rows
 nof_repeat <- 10
 
 
@@ -23,7 +23,7 @@ file_feather <- 'test_df.feather'
 file_rdata <- 'test_df.RData'
 file_rds <- 'test_df.rds'
 file_parquet <- 'test_df.parquet'
-file_avro <- 'test_df.avro'
+#file_avro <- 'test_df.avro'
 
 
 files <- file.info(c('test_df.csv','test_df_readr.csv','test_df_datatable.csv', 'test_df.feather', 'test_df.RData', 'test_df.rds', 'test_df.parquet'))
@@ -72,10 +72,10 @@ benchmark_read <- data.frame(summary(microbenchmark(
 colnames(benchmark_read) <- c("names", "read_min", "read_lq", "read_mean", "read_median", "read_uq", "read_max", "read_repeat")
 
 
-# merge results and convert file name to factor
-
+#merge results and create factors
 results <- inner_join(inner_join(benchmark_read, files, by = "names"), benchmark_write, by = "names")
 results <- results[,c("names","size_mb","read_min", "read_max", "read_median","write_min","write_max", "write_median")]
+
 results$names <- as.factor(results$names)
 
 ###########
@@ -85,11 +85,11 @@ library(glue)
 library(ggtext)
 
 title_lab_adjusted <- glue::glue(
-  "File types comparison on<br><span style = 'color:red;'>read operation</span> and <span style='color:darkgreen';>write operation</span>") 
+  "File types comparison on<br><span style = 'color:red;'>read operation</span> and <br><span style='color:darkgreen';>write operation</span>") 
 
 ggplot(results, aes(x=names, y=size_mb)) + 
      geom_bar(stat="identity", fill="lightblue") +
-     geom_text(aes(label=paste0(format(round(size_mb, 2), nsmall = 2), " mb", collapse=NULL)), vjust=-0.3, size=3.5) +
+     geom_text(aes(label=paste0(format(round(size_mb, 2), nsmall = 2), " MiB", collapse=NULL)), vjust=-0.3, size=3.5)+
      theme(axis.text.x = element_text(angle = 45, hjust = 1.3)) +
      coord_cartesian(ylim = c(0, 5), expand = F) +
      scale_y_continuous(breaks = seq(0, 5, 1),labels = scales::label_comma(accuracy = 1)) +
@@ -99,16 +99,19 @@ ggplot(results, aes(x=names, y=size_mb)) +
         axis.line = element_line(size = 0.1, linetype = "solid", colour = "grey50")) +
     ylab(label = 'Time (sec.) + File_Size') +  xlab(label = 'Files') +
   labs(title = title_lab_adjusted) +
-  theme(plot.title = element_markdown(), panel.background = element_rect(color = NA, fill = 'white')) +
-  geom_point (aes(y=write_median/1000, group=names),
+  theme(
+    plot.title = element_markdown(),
+    panel.background = element_rect(color = NA, fill = 'white')) +
+
+  geom_point (aes(y=write_median/100, group=names),
         col = "darkgreen",
         size = 2,
         stat ="identity",
-        alpha=.8 ) +
-  geom_point(aes(y=read_median/1000, group=names),
-         col = "red",
-         size = 2,
-         stat ="identity",
-         alpha=.8 ) 
+        alpha=.8) +
+  geom_point(aes(y=read_median/100, group=names),
+           col = "red",
+           size = 2,
+           stat ="identity",
+           alpha=.8 ) 
 
 
