@@ -5,12 +5,17 @@ CSV is relative uncompressed, sparse format but very common for data tasks, like
 
 ## Using Python 
 
-
-### 1. Creating Azure Storage account and container
-
-### 2. Creating connection to SQL Server with Python and start uploading files to Azure Account
-
-### 3. Benchmarking different file formats for cloud storage
+```python
+create_df()
+ 
+# results for write
+print(timeit.Timer(WRITE_CSV_fun_timeIt).timeit(number=number_of_runs))
+print(timeit.Timer(WRITE_ORC_fun_timeIt).timeit(number=number_of_runs))
+print(timeit.Timer(WRITE_PARQUET_fun_timeIt).timeit(number=number_of_runs))
+print(timeit.Timer(WRITE_PICKLE_fun_timeIt).timeit(number=number_of_runs))
+ 
+CLEAN_files()
+```
 
 #### Covered formats with Python 
 Benchmarking different file formats for cloud storage.
@@ -24,14 +29,6 @@ Benchmarking different file formats for cloud storage.
 8. XML (?)
 
 
-#### Python scripts for benchmarking
-
-
-#### Comparing read and write times
-
-Comparing read and write times for each file extension and see, which one performs better for given task.
-
-
 ## Using R  
 
 #### Covered formats with Python 
@@ -42,6 +39,25 @@ Benchmarking different file formats for cloud storage.
 
 
 #### R scripts for benchmarking
+
+```R
+benchmark_write <- data.frame(summary(microbenchmark(
+          "test_df.csv"     = write.csv(test_df, file = file_csv),
+          "test_df_readr.csv"     = readr::write_csv(test_df, file = file_csv_readr),
+          "test_df_datatable.csv"     = data.table::fwrite(test_df, file = file_csv_datatable),
+          "test_df.feather" = write_feather(test_df, file_feather),
+          "test_df.parquet" = write_parquet(test_df, file_parquet),
+          "test_df.rds"     = save(test_df, file = file_rdata),
+          "test_df.RData"   = saveRDS(test_df, file_rds), 
+  times = nof_repeat)))
+```
+## Comparing read and write times
+
+Comparing read and write times for each file extension and see, which one performs better for given task. 
+
+Example in case of testing with R:
+
+![alt text](https://tomaztsql.files.wordpress.com/2022/05/plot_zoom_png.png "Benchmark with R")
 
 
 ## Cloning the repository
