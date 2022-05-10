@@ -5,6 +5,17 @@ CSV is relative uncompressed, sparse format but very common for data tasks, like
 
 ## Using Python 
 
+#### Covered formats with Python 
+Benchmarking different file formats for cloud storage.
+1. CSV
+2. AVRO
+3. Parquet
+4. Pickle
+5. ORC
+6. TXT
+
+#### Python scripts for benchmark test
+
 ```python
 create_df()
  
@@ -17,22 +28,9 @@ print(timeit.Timer(WRITE_PICKLE_fun_timeIt).timeit(number=number_of_runs))
 CLEAN_files()
 ```
 
-#### Covered formats with Python 
-Benchmarking different file formats for cloud storage.
-1. CSV
-2. AVRO
-3. Parquet
-4. Pickle
-5. ORC
-6. TXT
-7. JSON (?)
-8. XML (?)
-
-
 ## Using R  
 
-#### Covered formats with Python 
-Benchmarking different file formats for cloud storage.
+#### Covered formats with R  
 1. CSV
 2. Parquet
 3. Feather
@@ -51,6 +49,7 @@ benchmark_write <- data.frame(summary(microbenchmark(
           "test_df.RData"   = saveRDS(test_df, file_rds), 
   times = nof_repeat)))
 ```
+
 ## Comparing read and write times
 
 Comparing read and write times for each file extension and see, which one performs better for given task. 
