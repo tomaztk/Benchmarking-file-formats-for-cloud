@@ -37,5 +37,9 @@ git clone https://github.com/tomaztk/Benchmarking-file-formats-for-cloud.git
 ```
 
 
-## Blog posts
+## Related Blog posts
+
+- [CSV or alternatives? Exporting data from SQL Server data to ORC, AVRO, Parquet, Feather files and store them into Azure data lake](https://tomaztsql.wordpress.com/2022/05/06/csv-or-alternatives-exporting-data-from-sql-server-data-to-orc-avro-parquet-feather-files-and-store-them-into-azure-data-lake/)
+- [Comparing performances of CSV to RDS, Parquet, and Feather file formats in R](https://tomaztsql.wordpress.com/2022/05/08/comparing-performances-of-csv-to-rds-parquet-and-feather-data-types/)
+
 
