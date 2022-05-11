@@ -65,6 +65,12 @@ You can follow the steps below to clone the repository.
 git clone https://github.com/tomaztk/Benchmarking-file-formats-for-cloud.git
 ```
 
+## Using Azure Blob storage for data lake
+
+Running SQL Server on-premise and uploading data to data lake, there is a python script (Jupyter notebook) with detailed steps and script.
+
+(https://github.com/tomaztk/Benchmarking-file-formats-for-cloud/blob/main/From_SQLServer_To_AzureBlobStore.ipynb)
+
 
 ## Related Blog posts
 
