@@ -56,8 +56,8 @@ Comparing read and write times for each file extension and see, which one perfor
 
 Example in case of testing with R:
 
-![alt text](https://tomaztsql.files.wordpress.com/2022/05/plot_zoom_png.png "Benchmark with R")
-
+<!-- ![alt text](https://tomaztsql.files.wordpress.com/2022/05/plot_zoom_png.png "Benchmark with R") -->
+![alt text](https://github.com/tomaztk/Benchmarking-file-formats-for-cloud/blob/main/imgs/benchmark_compare.png "Benchmark with R")
 
 ## Cloning the repository
 You can follow the steps below to clone the repository.
