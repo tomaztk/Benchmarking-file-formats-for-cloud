@@ -69,12 +69,23 @@ git clone https://github.com/tomaztk/Benchmarking-file-formats-for-cloud.git
 
 Running SQL Server on-premise and uploading data to data lake, there is a python script (Jupyter notebook) with detailed steps and script.
 
-(https://github.com/tomaztk/Benchmarking-file-formats-for-cloud/blob/main/From_SQLServer_To_AzureBlobStore.ipynb)
+[Link](https://github.com/tomaztk/Benchmarking-file-formats-for-cloud/blob/main/From_SQLServer_To_AzureBlobStore.ipynb)
 
 
 ## Related Blog posts
 
 - [CSV or alternatives? Exporting data from SQL Server data to ORC, AVRO, Parquet, Feather files and store them into Azure data lake](https://tomaztsql.wordpress.com/2022/05/06/csv-or-alternatives-exporting-data-from-sql-server-data-to-orc-avro-parquet-feather-files-and-store-them-into-azure-data-lake/)
 - [Comparing performances of CSV to RDS, Parquet, and Feather file formats in R](https://tomaztsql.wordpress.com/2022/05/08/comparing-performances-of-csv-to-rds-parquet-and-feather-data-types/)
+
+## Contributors and co-authors
+
+Thanks to these wonderful R community people for upgrading and improving these benchmarks. Your contributions are highly appreciated!
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/aguynamedryan"><img src="https://avatars.githubusercontent.com/u/117722?v=4" width="100px;" alt="Ryan Duryea"/><br /><sub><b>Ryan Duryea</b></sub></a><br /></td>
+   
+</tr>
+
+</table>
 
 
